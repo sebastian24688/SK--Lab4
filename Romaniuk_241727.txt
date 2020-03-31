@@ -1,0 +1,133 @@
+#####################################################
+###################   CZĘŚĆ 1  ######################
+#####################################################
+
+Zadanie 2
+Krok 1
+e) Jakie grupy multicastowe zostały przypisane do interfejsu G0/0?
+	FF02::1:FF00:1
+Krok 2
+a) Czy unicastowy IPv6 został przypisany do karty sieciowej NIC (network interface card) na PC-B? 
+	nie 
+Do przemyślenia:
+1. Dlaczego możliwe jest przypisanie tego samego adresu lokalnego dla łącza do obu interfejsów Ethernet na
+R1?
+	Ponieważ każdy interfejs rutera należy do oddzielnej sieci.
+2. Jaki jest identyfikator podsieci (Subnet ID) adresu unicastowego IPv6 2001:db8:acad::aaaa:1234/64?
+	2001:db8:acad:0
+	
+#####################################################
+###################   CZĘŚĆ 2  ######################
+#####################################################
+
+Krok 1
+1) Ile jest potrzebnych adresów hosta dla największej podsieci? 25
+2) Jaka jest wymagana minimalna liczba podsieci? 6
+3) Dany jest adres IP do podziału na podsieci:192.168.0.0/24. Jaka jest binarna postać maski?  11111111.11111111.11111111.00000000
+4) Co reprezentują jedynki w masce sieci? część sieci
+   Co reprezentują zera w masce sieci? część hosta
+5)  Liczba bitów podsieci definiuje liczbę podsieci. Biorąc pod uwagę
+każdą z możliwych masek podsieci przedstawionych w formacie binarnym oblicz, ile podsieci i ile hostów jest tworzone w każdym przykładzie?
+
+  11111111.11111111.11111111.10000000
+    Maska w postacji kropkowo dziesiętnej: 255.255.255.128
+    liczba podsieci: 2
+    Liczba hostow: 252
+    Liczba hostów w każdej podsieci: 126
+  11111111.11111111.11111111.11000000
+    Maska w postacji kropkowo dziesiętnej: 255.255.255.192
+    liczba podsieci: 4
+    liczba hostów: 248
+    Liczba hostów w każdej podsieci: 62
+  11111111.11111111.11111111.11100000 
+    Maska w postacji kropkowo dziesiętnej: 255.255.255.224
+    liczba podsieci: 8
+    liczba hostów: 240
+    Liczba hostów w każdej podsieci: 30
+  11111111.11111111.11111111.11110000
+    Maska w postacji kropkowo dziesiętnej: 255.255.255.240
+    liczba podsieci: 16
+    liczba hostów: 224
+    Liczba hostów w każdej podsieci: 14
+  11111111.11111111.11111111.11111000
+    Maska w postacji kropkowo dziesiętnej: 255.255.255.248
+    liczba podsieci: 32
+    liczba hostów: 192
+    Liczba hostów w każdej podsieci: 6
+  11111111.11111111.11111111.1111110
+    Maska w postacji kropkowo dziesiętnej: 255.255.255.252
+    liczba podsieci: 64
+    liczba hostów 128
+    Liczba hostów w każdej podsieci: 2
+6) Biorąc pod uwagę swoje odpowiedzi wskaż, która maska podsieci spełnia minimalne wymagania na liczbę adresów hosta?  11111111.11111111.11111111.11100000
+7) Biorąc pod uwagę swoje odpowiedzi wskaż, która maska podsieci spełnia minimalne wymagania na liczbę podsieci? 11111111.11111111.11111111.11100000
+8) Biorąc pod uwagę swoje odpowiedzi wskaż, która maska podsieci spełnia minimalne wymagania na liczbę podsieci i adresów hosta?  11111111.11111111.11111111.11100000
+9) Adres podsieci /Prefiks/ Maska podsieci (kropkowo dziesiętna)
+  192.168.0.0/27		255.255.255.224
+  192.168.0.32/27		255.255.255.224
+  192.168.0.64/27		255.255.255.224
+  192.168.0.96/27		255.255.255.224
+  192.168.0.128/27		255.255.255.224
+  192.168.0.160/27		255.255.255.224
+  192.168.0.192/27		255.255.255.224
+  192.168.0.224/27		255.255.255.224
+10) 
+Urządzenie 	Interfejs 	Adres IP 	Maska 		Brama domyślna
+R1		G0/0 		192.168.0.33	255.255.255.224	N/A
+		G0/1		192.168.0.1	255.255.255.224	N/A
+		Lo0 		192.168.0.65	255.255.255.224	N/A
+		Lo1 		192.168.0.97	255.255.255.224	N/A
+S1 		VLAN 1 		N/A 		N/A 		N/A
+PC-A 		NIC		192.168.0.2	255.255.255.224	192.168.0.1
+PC-B		NIC		192.168.0.34	255.255.255.224	192.168.0.33
+
+Krok 2 
+Part 2
+a) tak
+b) tak
+c) tak
+d) Nie. Request time out 
+
+Do przemyślenia
+1. Podział jednej większej sieci na kilka mniejszych podsieci zapewnia większą elastyczność i bezpieczeństwo w implementacji sieci. Napisz jakie są wady podziału sieci na podsieci o tych samych rozmiarach (o tej samej liczbie adresów)?
+  Podział może nie sprawdzić się gdy chcemy uzustać zróżnisowaną liczbę hostów w podsieciach, np. 3, 10 i 80. Może dojść do sytuacji, gdy wyczerpiemy liczbę możliwych podsieci, ale będzie jeszcze wiele wolnych adresów w sieci. 
+2. Jak myślisz dlaczego jako adres IP bramy domyślnej jest używany pierwszy użyteczny adres w sieci?
+  Być może dla przejrzystości sieci. Z punktu widzenia sieci nie jest to ważne jaki adres będzie miała brama domyślna.
+
+#####################################################
+###################   CZĘŚĆ 3  ######################
+#####################################################
+Ćwiczenie wykonywane zgodnie z zaleceniem:
+"Do ćwiczenia 4c w pliku z odpowiedziami proszę przesłać tylko uzupełnione tabelki ze strony 4 instrukcji."
+
+
+Opis				Liczba hostów	Adres sieci		Adres pierw. hosta	Adres rozgłoszeniowy
+HQ G0/0 (F0/0)			16,000		172.16.128.0/18		172.16.128.1		172.16.128.255
+HQ G0/1 (F0/1)			8,000		172.16.192.0/19		172.16.192.1		172.16.192.255
+BR1 G0/1 (F0/1)			4,000		172.16.224.0/20		172.16.224.1		172.16.224.255
+BR1 G0/0 (F0/0)			2,000		172.16.240.0/21		172.16.240.1		172.16.240.255
+BR2 G0/1 (F0/1)			1,000		172.16.248.0/22		172.16.248.1		172.16.248.255
+BR2 G0/0 (F0/0)			500		172.16.252.0/23		172.16.252.1		172.16.252.255
+HQ S0/0/0 - BR1 S0/0/0		2		172.16.254.0/30		172.16.254.1		172.16.254.3
+HQ S0/0/1 - BR2 S0/0/1		2		172.16.254.4/30		172.16.254.5		172.16.254.7
+BR1 S0/0/1 - BR2 S0/0/0		2		172.16.254.8/30		172.16.254.9		172.16.254.11
+
+
+
+Urządzenie	Interfejs	Adres IP	Maska podsieci		Interfejs urządzenia
+
+		G0/0		172.16.128.1	255.255.192.0		16,000 Host LAN
+HQ		G0/1		172.16.192.1	255.255.224.0		8,000 Host LAN
+		S0/0/0		172.16.254.1	255.255.255.252		BR1 S0/0/0
+		S0/0/1		172.16.254.5	255.255.255.252		BR2 S0/0/1
+
+		G0/0		172.16.240.1	255.255.248.0		2,000 Host LAN
+BR1		G0/1		172.16.224.1	255.255.240.0		4,000 Host LAN
+		S0/0/0		172.16.254.2	255.255.255.252		HQ S0/0/0
+		S0/0/1		172.16.254.9	255.255.255.252		BR2 S0/0/0
+
+		G0/0		172.16.252.1	255.255.254.0		500 Host LAN
+BR2		G0/1		172.16.248.1	255.255.252.0		1,000 Host LAN
+		S0/0/0		172.16.254.10	255.255.255.252		BR1 S0/0/1
+		S0/0/1		172.16.254.6	255.255.255.252		HQ S0/0/1
+
